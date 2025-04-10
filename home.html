@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="main">
+        <div class="search-container">
+            <input type="text" id="search-bar" placeholder="search artis or song name ...">
+            <button type="button" id="search-button" style="height: 0px; width:0px;padding:0%"></button>
+          </div>
+          <div id="song-list">
+            <!-- show the scerch song -->
+          </div>
+        <div class="left">
+            <!-- song image -->
+            <img id="track_image">
+            <div class="list">
+                <button onclick="toggleSongList()" id="showlist"><i class="fa fa-list listSong"></i> </button>
+                <ul type="none" id="songList"></ul>
+
+            </div>
+        </div>
+
+        <!-- right part -->
+        <div class="right">
+            <div class="show_song_no">
+                <p id="present">1</p>
+                <p id="bar">/</p>
+                <p id="total"></p>
+            </div>
+
+            <!-- song title -->
+            <div id="song_title">
+                <p id="title">title</p>
+                <p id="artist">Artis Name</p>
+            </div>
+            <div id="backgroundDiv" onclick="toggleOptions()">
+                   <i class="fa-solid fa-pen-to-square"></i><span>Customise</span>
+                <div id="options">
+                    <button onclick="changeColor('#222')" class="color" style="background-color: black;"></button>
+                    <button onclick="changeColor('rgb(7, 6, 109)')" class="color"
+                        style="background-color: rgb(7, 6, 109);"></button>
+                    <button onclick="changeColor('orange')" class="color"
+                        style="background-color:rgb(255, 140, 0) ;"></button>
+                    <button onclick="changeColor('rgb(46, 91, 7)')" class="color"
+                        style="background-color: rgb(46, 91, 7);"></button>
+                    <button onclick="changeColor('rgb(255, 204, 0)')" class="color"
+                        style="background-color: rgb(255, 204, 0);"></button>
+                    <button onclick="changeColor('rgb(77, 42, 4)')" class="color"
+                        style="background-color: rgb(77, 42, 4);"></button>
+                    <button onclick="changeColor('rgb(146, 19, 19)')" class="color"
+                        style="background-color: rgb(146, 19, 19);"></button>
+                    <button onclick="changeColor('rgb(166, 0, 255)')" class="color"
+                        style=" background-color:rgb(166, 0, 255) ;"></button>
+
+                </div>
+                <!-- middle part -->
+            </div>
+            <div class="middle">
+                <button onclick="previous_song()" id="pre"><i class="song fa-solid fa-backward-fast" aria-hidden="true"></i></button>
+                <button onclick="skipBackward()"><i class=" skipsong fa-solid fa-angles-left song">10</i></button>
+                <button onclick="just_play()" id="play"><i class="fa fa-play song" aria-hidden="true"></i></button>
+                <button class="i" onclick="skipForward()">10<i class=" skipsong fa-solid fa-angles-right song"></i></button>
+                <button onclick="next_song()" id="next"><i class="song fa-solid fa-forward-fast" aria-hidden="true"></i></button>
+            </div>
+
+            <div class="duration">
+                <p id="show_duration" class="duration_time">0:00</p>
+                <input type="range" min="0" max="100" value="0" id="duration_slider" oninput="change_duration()">
+
+                <p id="SongLength" class="SongLength">0.00</p>
+            </div>
+        </div>
+        <div class="showTimer" onclick="showTimer()"><i class="fa-regular fa-clock"></i><span>Timer</span></div>
+        <div class="timer">
+            <label for="hours">Hours:</label>
+            <input type="number" id="hours" value="0" min="0"><br><br>
+            <label for="minutes">Minutes:</label>
+            <input type="number" id="minutes" value="0" min="0" max="59"><br><br>
+            <label for="seconds">Seconds:</label>
+            <input type="number" id="seconds" max="59" min="0" value="30">
+            <br><br>
+            <div style="color: black ;">Timer: <span id="timer">00:00:00</span></div>
+            <br><br>
+            <button id="changetimertext" onclick="toggleTimer()">Start Timer</button>
+        </div>
+        <button id="showaction" onclick="showaction()"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+        <div class="showaction">
+            <ul>
+                <li onclick="previous_song() , hideOnClick()"><span class="left-text" >Privious Song</span><span class="divider"></span><span class="right-text">Arrow Down / Fn+F10</span></li>
+                <li onclick="next_song() , hideOnClick()"><span class="left-text" >Next song</span><span class="divider"></span><span class="right-text">Arrow Up / Fn+F12</span></li>
+                <li onclick="skipForward() , hideOnClick()"><span class="left-text">skipForward 10s</span><span class="divider"></span><span class="right-text">Arrow Left</span></li>
+                <li onclick="skipBackward() , hideOnClick()"><span class="left-text">skipBackward</span><span class="divider"></span><span class="right-text">Arrow Right</span></li>
+                <li onclick="showTimer() , hideOnClick()"><span class="left-text" >Timer</span><span class="divider"></span><span class="right-text addtional">+ </span></li>
+                <li onclick="toggleOptions() , hideOnClick()"><span class="left-text" >background-color</span><span class="divider"></span><span class="right-text addtional">- </span></li>
+                <li onclick="just_play() , hideOnClick()"><span class="left-text" >Play/Pause</span><span class="divider"></span><span class="right-text">Space Bar / Fn+F11</span></li>
+                <li onclick="toggleSongList() , hideOnClick()"><span class="left-text" >Song List</span><span class="divider"></span><span class="right-text">Show songList</span></li>
+                <li onclick="showfile() , hideOnClick()"><span class="left-text" >Upload Song</span><span class="divider"></span><span class="right-text">Show uploadSong</span></li>
+            </ul>
+        </div>
+ 
+        </div>
+        <button class="fileinput" onclick="showfile()">Upload your song</button>
+        <form id="showfileinput">
+            <label for="fileInput">Select a Audio file:</label><br>
+            <input type="file" id="fileInput"><br>
+            <button type="button" onclick="uploadSong()" id="upload" >Upload your song</button>
+        </form>
+
+    </div>
+    
+</body>
+<script src="home.js"></script>
+
+</html>
